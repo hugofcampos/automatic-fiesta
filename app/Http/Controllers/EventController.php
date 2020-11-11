@@ -6,10 +6,13 @@ use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * @group Events
+ */
 class EventController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List.
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,24 +22,24 @@ class EventController extends Controller
     }
 
     /**
-     * Show an event.
+     * Show.
+     *
+     * @urlParam event string required The UUID of the post. Example: 94c102a4-a987-3e2a-b7df-c51805e6e494
      *
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event)
     {
-        return $event->audits;
+        return $event;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create.
      *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // dump($request->input('event_dates')); die;
-
         $event = new Event($request->all());
         $event->author()->associate(User::firstOrFail());
         $event->save();
@@ -49,7 +52,9 @@ class EventController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update.
+     *
+     * @urlParam event string required The UUID of the post. Example: 94c102a4-a987-3e2a-b7df-c51805e6e494
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Event        $event
@@ -64,7 +69,9 @@ class EventController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete.
+     *
+     * @urlParam event string required The UUID of the post. Example: 94c102a4-a987-3e2a-b7df-c51805e6e494
      *
      * @param \App\Models\Event $event
      *
@@ -78,7 +85,9 @@ class EventController extends Controller
     }
 
     /**
-     * Publish an event.
+     * Publish.
+     *
+     * @urlParam event string required The UUID of the post. Example: 94c102a4-a987-3e2a-b7df-c51805e6e494
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Event        $event

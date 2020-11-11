@@ -22,6 +22,25 @@ class Event extends Model implements ContractsAuditable
         'name',
     ];
 
+    /**
+     * Hidden attributes.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id',
+    ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+    title: 'Ingresse API'
+    description: "This is the core API for Ingresse Plarform. It should provide a set of tools to help producers run their events and\noffer a better experience for their attendees."
+    version: 1.0.0
+servers:
+    -
+        url: ingresse20.test
+paths:
+    /api/events:
+        get:
+            summary: List.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    current_page: 1
+                                    data: [{ uuid: dbcb8e02-683c-42e1-b8bd-05b81b887956, name: 'alias eum ea 😛', user_id: 2, published: false, created_at: '2020-11-11T00:58:45.000000Z', updated_at: '2020-11-11T00:58:45.000000Z', deleted_at: null, event_dates: [] }]
+                                    first_page_url: 'http://localhost/api/events?page=1'
+                                    from: 1
+                                    last_page: 1
+                                    last_page_url: 'http://localhost/api/events?page=1'
+                                    links: [{ url: null, label: '&laquo; Previous', active: false }, { url: 'http://localhost/api/events?page=1', label: 1, active: true }, { url: null, label: 'Next &raquo;', active: false }]
+                                    next_page_url: null
+                                    path: 'http://localhost/api/events'
+                                    per_page: 10
+                                    prev_page_url: null
+                                    to: 1
+                                    total: 1
+                                properties:
+                                    current_page: { type: integer, example: 1 }
+                                    data: { type: array, example: [{ uuid: dbcb8e02-683c-42e1-b8bd-05b81b887956, name: 'alias eum ea 😛', user_id: 2, published: false, created_at: '2020-11-11T00:58:45.000000Z', updated_at: '2020-11-11T00:58:45.000000Z', deleted_at: null, event_dates: [] }], items: { type: object } }
+                                    first_page_url: { type: string, example: 'http://localhost/api/events?page=1' }
+                                    from: { type: integer, example: 1 }
+                                    last_page: { type: integer, example: 1 }
+                                    last_page_url: { type: string, example: 'http://localhost/api/events?page=1' }
+                                    links: { type: array, example: [{ url: null, label: '&laquo; Previous', active: false }, { url: 'http://localhost/api/events?page=1', label: 1, active: true }, { url: null, label: 'Next &raquo;', active: false }], items: { type: object } }
+                                    next_page_url: { type: string, example: null }
+                                    path: { type: string, example: 'http://localhost/api/events' }
+                                    per_page: { type: integer, example: 10 }
+                                    prev_page_url: { type: string, example: null }
+                                    to: { type: integer, example: 1 }
+                                    total: { type: integer, example: 1 }
+            tags:
+                - Events
+            security: []
+        post:
+            summary: Create.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Events
+            security: []
+    '/api/events/{event}':
+        get:
+            summary: Show.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                404:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example: {  }
+                                properties: {  }
+            tags:
+                - Events
+            security: []
+        put:
+            summary: Update.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Events
+            security: []
+        delete:
+            summary: Delete.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Events
+            security: []
+        parameters:
+            -
+                in: path
+                name: event
+                description: 'The UUID of the post.'
+                example: 94c102a4-a987-3e2a-b7df-c51805e6e494
+                required: true
+                schema:
+                    type: string
+    '/api/events/{event}/publish':
+        put:
+            summary: Publish.
+            description: ''
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Events
+            security: []
+        parameters:
+            -
+                in: path
+                name: event
+                description: 'The UUID of the post.'
+                example: 94c102a4-a987-3e2a-b7df-c51805e6e494
+                required: true
+                schema:
+                    type: string
