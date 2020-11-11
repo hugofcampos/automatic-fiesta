@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::apiResources([
-    'events' => EventController::class,
-]);
-Route::put('events/{event}/publish', [EventController::class, 'publish']);
+Route::group(['as' => 'api.'], function () {
+    Route::apiResources([
+        'events' => EventController::class,
+    ]);
+    Route::put('events/{event}/publish', [EventController::class, 'publish']);
+});
