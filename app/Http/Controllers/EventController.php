@@ -18,7 +18,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::with('eventDates')->paginate(10);
+        return Event::with(['author', 'eventDates'])->paginate(10);
     }
 
     /**
